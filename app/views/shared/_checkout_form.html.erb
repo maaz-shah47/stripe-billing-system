@@ -1,0 +1,7 @@
+<%= form_tag checkouts_path, method: :post, data: {
+                        turbo: false
+                      } do %>
+  <input type="hidden" name="price_id" value=<%= plan.price_id%>>
+  <input type="hidden" name="plan_id" value=<%= plan.id %>>
+  <input type="submit" value="Subscribe" class="btn btn-primary">
+<% end %>

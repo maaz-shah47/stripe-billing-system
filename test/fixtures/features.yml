@@ -1,0 +1,11 @@
+one:
+  name: MyString
+  code: MyString
+  unit_price: 9.99
+  max_unit_limit: 1
+
+two:
+  name: MyString
+  code: MyString
+  unit_price: 9.99
+  max_unit_limit: 1

@@ -1,0 +1,38 @@
+<h1 class="mb-4 text-center display-1">Feature Details</h1>
+<div class="container" style="margin-top:3rem">
+<% if @features.empty? %>
+  <div class="row">
+      <div class="col-6 plans-buttons">
+          <h3>There are currently no features available for this</h3>
+          <% if policy(:feature).new? %>
+            <%= link_to "Add Feature", new_plan_feature_path(params[:plan_id]), class: "btn btn-primary" %>
+          <% end %>
+          <%= link_to "Back", authenticated_root_path, class: "btn btn-primary" %>
+      </div>
+  </div>
+<% else %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Unit Price</th>
+        <th scope="col">Max Unit Limit</th>
+        <% if admin? %>
+          <th scope="col">Action</th>
+        <% else %>
+          <th scope="col">Feature Usage</th>
+          <th scope="col">Add Usage</th>
+        <% end %>
+      </tr>
+    </thead>
+      <tbody>
+        <%= render 'features', features: @features %>
+      </tbody>
+    </table>
+    <% if admin? %>
+      <%= link_to "Add Feature", new_plan_feature_path(params[:plan_id]), class: "btn btn-primary" %>
+    <% else %>
+      <%= link_to  "Back", authenticated_root_path, class: "btn btn-primary btn-md" %>
+    <% end %>
+  </div>
+<% end %>

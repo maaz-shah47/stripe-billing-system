@@ -1,0 +1,77 @@
+.navbar {
+    padding: 1.3rem !important;
+    .navbar-brand {
+        font-size: 2.5rem !important;
+    }
+    .navbar-nav {
+        float: right !important;
+        .nav-item {
+            font-size: 1.9rem;
+        }
+        li:last-child {
+            span {
+                font-weight: 200;
+                font-style: italic;
+                margin-top: 5px;
+                margin-right: 1rem;
+            }
+        }
+    }
+}
+
+.logged-in-user-text {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    margin-right: 2rem;
+}
+
+.billing-btn {
+    margin-top: 2rem !important;
+}
+
+.user-icon {
+    a {
+        padding: 0 !important;
+    }
+}
+
+#flash-message-wrapper {
+    position: fixed;
+    top: 40px;
+    right: 100px;
+    width: 500px;
+}
+
+.plans-buttons {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.plans-buttons-1 {
+    margin-top: 2rem;
+}
+
+.plans-heading {
+    text-align: center;
+}
+
+.feature-heading {
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+.nav-avatar {
+    height: 50px;
+    width: 50px;
+    border-radius: 10rem;
+}
+
+.field_with_errors {
+    color: rgb(191, 4, 4);
+    text-transform: uppercase;
+}
+
+.subs-buttons {
+    margin-top: 1rem !important;
+    margin-left: 1.5rem;
+}

@@ -1,0 +1,4 @@
+feature_usage:
+  cron: "@daily"
+  class: "FeatureUsageJob"
+  queue: default

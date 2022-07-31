@@ -1,0 +1,33 @@
+<h1 class="text-center">Subscriptions Details</h1>
+<div class="container-fluid" style="margin-top: 5rem">
+  <% if @subscriptions.empty? %>
+    <div class="row">
+      <div class="col-6 plans-buttons">
+        <% if admin? %>
+          <h3>There are currently no subscriptions available</h3>
+          <%= link_to "Back", authenticated_root_path, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Plan Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Start Date</th>
+          <th scope="col">End Date</th>
+          <th scope="col">Interval</th>
+          <th scope="col">Email</th>
+          <th scope="col">Days Left</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render 'subscriptions', subscriptions: @subscriptions %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
+<div class="text-center">
+  <%= paginate @subscriptions %>
+</div>

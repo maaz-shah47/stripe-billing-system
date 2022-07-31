@@ -1,0 +1,30 @@
+<% features.each do |feature| %>
+  <tr>
+    <td><%= feature.name %></td>
+    <td><%= feature.unit_price %></td>
+    <td><%= feature.max_unit_limit %></td>
+    <% unless admin? %>
+      <td>
+        <% unless usage_empty(current_user, feature) %>
+          <%= find_usage(current_user, feature) %>
+        <% end %>
+      </td>
+    <% end %>
+    <% if policy(:feature).destroy? %>
+      <td>
+        <%= button_to "Delete", plan_feature_path(params[:plan_id], feature), method: :delete, data: {confirm: "Are you sure?"},
+                                                                class: "btn btn-danger" %>
+      </td>
+      <td>
+        <%= link_to  "Show", plan_feature_path(params[:plan_id], feature), class: "btn btn-primary" %>
+      </td>
+      <td>
+        <%= link_to  "Show", plan_feature_path(params[:plan_id], feature),  class: "btn btn-primary" %>
+      </td>
+    <% else %>
+      <td>
+        <%= render "shared/feature_usage_form", feature: feature %>
+      </td>
+    <% end %>
+  </tr>
+<% end %>

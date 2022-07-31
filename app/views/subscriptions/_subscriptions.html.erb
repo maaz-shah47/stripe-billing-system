@@ -1,0 +1,19 @@
+<% subscriptions.each do |sub| %>
+  <% plan_ret = get_plan(sub.plan_id) %>
+  <% product =  get_product(plan_ret.product) if plan_ret.present? %>
+  <% user = User.find(sub.user_id) %>
+  <% if product.present? && plan_ret.present? %>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= plan_amount(plan_ret.amount) %></td>
+      <td><%= sub.current_period_start %></td>
+      <td><%= sub.current_period_end %></td>
+      <td><%= sub.interval %></td>
+      <td><%= user.email %></td>
+      <td><%= billing_day(sub.created_at) %></td>
+      <% if billing_day(sub.created_at) <= 0 %>
+        <td><%= link_to  "Send Email", '#' %></td>
+      <% end %>
+    </tr>
+  <% end %>
+<% end %>

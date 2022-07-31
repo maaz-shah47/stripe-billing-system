@@ -1,0 +1,55 @@
+<h1 class="text-center">Users</h1>
+
+<div class="container">
+  <div class="well well-lg">
+    <% if @users.empty? %>
+      <h3>There no users available to show. Add Some users</h3>
+      <div class="row">
+        <div class="col-6 plans-buttons">
+          <%= link_to "Add User", new_user_invitation_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% else %>
+      <% @users.each do |user| %>
+        <div class="list-group p-3">
+          <div class ="list-group-item list-group-item-action">
+            <div class="row">
+              <div class="col-md-2">
+                <% if user.avatar.attached? %>
+                  <%= image_tag user.avatar, class: "img-fluid", style: "height: 150px; width: 150px" %>
+                <% end %>
+              </div>
+              <div class="col-md-10">
+                <div class="row">
+                  <h5 class="" style="margin-top:23px">Email: <%= user.email %></h5>
+                  <h5>User Type: <%= user.user_type %></h5>
+                  <h5>Invitation Accepted? <strong><%=user.invitation_accepted? %> </strong></h5>
+                  <% if user.admin? %>
+                    <h5>Invitees: <strong><%= user.invitees.count %></strong></h5>
+                  <% end %>
+                  <% if check_invitation?(user) %>
+                    <h5><%= link_to  "Resend Invite", resend_invitation_user_path(user), method: :patch, class: "btn btn-primary btn-sm" %></h5>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 subs-buttons">
+              <div class="col-md-1">
+                <%= link_to "Update", edit_user_path(user), class: "btn btn-info" %>
+              </div>
+              <div class="col-md-1">
+                <%= button_to "Delete", user_path(user), method: :delete, data: {confirm: "Are you sure?"},
+                                                            class: "btn btn-danger " %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <div class="text-center">
+      <%= paginate @users%>
+    </div>
+  </div>
+</div>

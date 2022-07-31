@@ -1,0 +1,9 @@
+<%= form_tag feature_usages_path, method: :post, data: {
+                    turbo: false, remote: true
+                  } do %>
+  <input type="number" name="usage" id="usage", min="0",
+  value=0 /> <input type="hidden" name="feature_id" id="feature_id", value=<%= feature.id %>
+  /> <input type="hidden" name="plan_id", value=<%= params[:plan_id] %>
+  />
+  <input type="submit" value="Add Usage" class="btn btn-primary btn-sm">
+<% end %>

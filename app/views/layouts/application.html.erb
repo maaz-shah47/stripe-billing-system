@@ -1,16 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>StripeBillingSystem</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "BillingAndPaymentSystem" %></title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+
+    <%= javascript_include_tag "application" %>
+
+    <%= javascript_include_tag 'https://js.stripe.com/v3/', 'data-turbolinks-track': 'reload' %>
+
   </head>
-
   <body>
-    <%= yield %>
+
+    <%= render "shared/application_navbar" %>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <%= flash_messages %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

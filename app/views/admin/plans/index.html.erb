@@ -1,0 +1,66 @@
+<h1 class="text-center">Available Plans</h1>
+
+<div class="container">
+  <div class="">
+    <% if @plans.empty? %>
+      <div class="row">
+        <div class="col-6 plans-buttons">
+          <% if policy(:plan).new? %>
+            <h3>There no plans available to show. Add Some plans</h3>
+            <%= link_to "Add Plan", new_plan_path, class: "btn btn-primary" %>
+          <% else %>
+            <h3>There no plans available to show. Come back later</h3>
+          <% end %>
+        </div>
+      </div>
+    <% else %>
+      <% @plans.each do |plan| %>
+        <div class="col-md-4">
+          <div class="list-group p-3">
+            <div class="well well-lg">
+              <%= link_to '#', class: "list-group-item list-group-item-action" do %>
+                <div class="d-flex justify-content-center">
+                  <h3 class="mb-1 plans-heading"><%= plan.name %></h3>
+                </div>
+                <h5 class="text-center" style="margin-top:23px">$<%= plan.monthly_fee %></h5>
+              <% end %>
+              <div class="row plans-buttons-1">
+                <div class="col-md-3">
+                  <% if policy(:plan).edit? %>
+                    <%= link_to "Update", edit_plan_path(plan), class: "btn btn-info btn sm" %>
+                  <% end %>
+                </div>
+                <div class="col-md-3">
+                  <% if policy(:plan).destroy? %>
+                    <%= button_to "Delete", plan_path(plan), method: :delete, data: {confirm: "Are you sure?"},
+                                                                  class: "btn btn-danger btn-md" %>
+                  <% end %>
+                </div>
+                <div class="col-md-3">
+                  <% if admin? %>
+                    <%= link_to "Show Features", plan_features_path(plan), class: "btn btn-primary btn-md" %>
+                  <% end %>
+                </div>
+                <div>
+                  <% if !admin? %>
+                    <div class="subs-buttons">
+                      <% if des_plan(plan, @sub) %>
+                        <%= link_to  "Subscribed", '#', class: "btn btn-success mt-md-2" %>
+                        <%= link_to "Show Features", plan_features_path(plan), class: "btn btn-primary mt-md-2" %>
+                      <% else %>
+                        <%= render "shared/checkout_form", plan: plan %>
+                      <% end %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<div class="text-center">
+  <%= paginate @plans %>
+</div>

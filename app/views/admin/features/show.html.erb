@@ -1,0 +1,11 @@
+<h1>Feature Details</h1>
+<p>Name:
+  <%= @feature.name %></p>
+<p>Code:
+  <%= @feature.code %></p>
+<p>Unit Price:
+  <%= @feature.unit_price %></p>
+<p>Max Unit Limit:
+  <%= @feature.max_unit_limit %></p>
+
+<%= link_to  "Edit Feature", edit_plan_feature_path(@plan, @feature), class: "btn btn-primary" %>

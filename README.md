@@ -1,24 +1,88 @@
-# README
+## Billing & Recurring Payment System v2.0
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is basically the implementation of recurrence billing and payment system. There are two user roles[Admin, Buyer]. Admin can manage plans, add features and manage users. Users can visit different plans and subscribe them on monthly basis. I used stripe for payment gateway.
 
-Things you may want to cover:
+##### 1. Check out the repository
 
-* Ruby version
+```bash
+git clone git@github.com:maaz-shah07/billing-and-payment-system.git
+```
 
-* System dependencies
+##### 2. Create database.yml file
 
-* Configuration
+Copy the sample database.yml file and edit the database configuration as required.
 
-* Database creation
+```bash
+cp config/database.yml.sample config/database.yml
+```
 
-* Database initialization
+##### 3. Create and setup the database
 
-* How to run the test suite
+Run the following commands to create and setup the database.
 
-* Services (job queues, cache servers, search engines, etc.)
+```ruby
+rails db:create
+rails db:setup
+```
 
-* Deployment instructions
+##### 3. Install gems using bundler
 
-* ...
+```ruby
+Run bundle install
+```
+
+<<<<<<< HEAD
+
+##### 4. Start the Rails server
+
+=======
+
+##### 4. Setup database and migrations
+
+```ruby
+  rails db:migrate
+```
+
+##### 5. Load seed data
+
+```ruby
+  rails db:seed
+```
+
+##### 6. Start the Rails server
+
+> > > > > > > pagination-branch
+
+You can start the rails server using the command given below.
+
+```ruby
+bundle exec rails s
+```
+
+And now you can visit the site with the URL http://localhost:3000
+
+## Dependencies
+
+```
+ruby "2.7.1"
+rails, "~> 7.0.2", ">= 7.0.2.3"
+carrierwave, '~> 2.0'
+bootstrap-sass, '~> 3.3', '>= 3.3.6'
+sqlite3, "~> 1.4"
+twitter-bootstrap-rails
+activestorage-cloudinary-service
+bootstrap
+carrierwave
+client_side_validations
+cloudinary
+jquery-rails
+'pay', '~> 3.0', '>= 3.0.24'
+pundit
+sidekiq
+redis '~> 4.0'
+stripe, '~> 5.53'
+twitter-bootstrap-rails
+sidekiq
+sidekiq-cron
+
+```
